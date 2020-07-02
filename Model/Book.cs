@@ -8,7 +8,13 @@ namespace BookListRazor.Model
 {
     public class Book
     {
+        // creates an id value automatically
         [Key]
         public int Id { get; set; }
+
+        [Required]
+        public string Name { get; set; }
+
+        public string Author { get; set; }
     }
 }

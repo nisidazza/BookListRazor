@@ -15,9 +15,12 @@ namespace BookListRazor.Controllers
         {
             _db = db;
         }
-        public IActionResult Index()
+        //implements HTTP GET
+        //this API retrieves the books and passes them back when it's called
+        [HttpGet]
+        public IActionResult GetAll()
         {
-            return View();
+            return Json(new { data=_db.Book.ToList()});
         }
     }
 }

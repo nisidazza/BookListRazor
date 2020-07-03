@@ -27,5 +27,22 @@ namespace BookListRazor.Pages.BookList
             //retrieves all the books from the database and stores them inside IEnumerable 
             Books = await _db.Book.ToListAsync();
         }
+
+        public async Task<IActionResult> OnPostDelete(int id)
+        {
+            //finds the book
+            var book = await _db.Book.FindAsync(id);
+            if (book == null)
+            {
+                return NotFound();
+            }
+            //removes the book from the database
+            _db.Book.Remove(book);
+            //saves changes in db
+            await _db.SaveChangesAsync();
+
+            return RedirectToPage("Index");
+
+        }
     }
 }

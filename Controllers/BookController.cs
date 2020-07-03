@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BookListRazor.Controllers
 {
+    [Route("api/Book")]
+    [ApiController]
     public class BookController : Controller
     {
         private readonly ApplicationDbContext _db;
